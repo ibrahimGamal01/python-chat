@@ -16,13 +16,11 @@ response = openai.Completion.create(
     # stop=["You:"]
 )
 
-# print(response.text)
-
 # Loop indefinitely to continue the conversation
 while True:
     # Read the user's message
     message = input(">?>?>?> ")
-
+    if message == "stop": break
     # Use the ChatGPT API to generate a response to the user's message
     response = openai.Completion.create(
         engine="text-davinci-002", prompt=f"{prompt}\n{message}", max_tokens=1024, temperature=0.5)
